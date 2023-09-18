@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block title %}Remove Employee
+{% endblock %}
+{% block style %}
+@media(max-width: 900px){
+  .btn-container{
+    display:none;
+  }
+}
+{% endblock style %}
+    {% block body %}
+    <div class="container pt-5  text-white">
+      <h1>ReamoveEmp!</h1>
+      <hr/>
+      <div class="row">
+        <div class="col-md-10">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              {% for emp in emps %}
+              <li><a class="dropdown-item" href="removeEmp/{{emp.id}}">{{emp}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    {% endblock body %}
+   

@@ -1,0 +1,79 @@
+{% extends "index.html" %}
+{% block title %}
+Add Employee
+{% endblock title %}
+
+{% block style %}
+@media(max-width: 900px){
+  .btn-container{
+    display:none;
+  }
+}
+{% endblock style %}
+    {% block body %}
+
+    <div class="container my-5">
+        <div class="row text-white">
+            <h1>AddEmp!</h1>
+            <hr>
+            <div class="col-6 text-white">
+             
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="fname" class="form-label">First Name </label>
+                      <input type="text" class="form-control" name="fname" required>
+                    </div>
+                    <select class="form-select my-3" aria-label="Default select example" name="dept" required>
+                        <option selected>Department</option>
+                        {% for D in Ds %}
+                        <option value="{{D.id}}">{{D.name}}</option>
+
+                        {% endfor %}
+                      </select>
+                    <div class="mb-3">
+                      <label for="fname" class="form-label">Salary </label>
+                      <input type="text" class="form-control" name="salary" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="fname" class="form-label">Phone </label>
+                      <input type="number" class="form-control" name="phone" required>
+                    </div>
+  
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="fname" class="form-label" >Last Name </label>
+                    <input type="text" class="form-control" name="lname" required>
+                  </div>
+                  
+                
+                  <select class="form-select my-3" aria-label="Default select example" name="role" required>
+                    <option selected>Role</option>
+                    {% for R in Rs %}
+                    <option  value="{{R.id}}">{{R.name}}</option>
+
+                    {% endfor %}
+                  </select>
+                  
+                
+                  <div class="mb-3">
+                    <label for="fname" class="form-label">Bonus </label>
+                    <input type="text" class="form-control" name="bonus" required>
+                  </div>
+                  
+                
+                  <div class="mb-3">
+                    <label for="fname" class="form-label">Hire Date </label>
+                    <input type="date" class="form-control" name="hdate" required>
+                  </div>
+                  
+                
+                  <button type="submit" class="btn btn-primary mx-auto">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock body %}
+
+    

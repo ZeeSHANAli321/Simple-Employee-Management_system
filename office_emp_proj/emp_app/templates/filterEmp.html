@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% block title %}Filter Employee
+{% endblock %}
+{% block style %}
+@media(max-width: 900px){
+  .btn-container{
+    display:none;
+  }
+}
+{% endblock style %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h1>filterEmp</h1>
+      <hr />
+      <form class="mx-auto" action="/filterEmp" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label"> Name</label>
+          <input type="text" class="form-control" name="name">
+        
+        </div>
+        <select class="form-select my-3" aria-label="Default select example" name="dept" required>
+          <option selected value="0">Department</option>
+          {% for D in Ds %}
+          <option value="{{D.id}}">{{D.name}}</option>
+
+          {% endfor %}
+        </select>
+
+        <select class="form-select my-3" aria-label="Default select example" name="role" required>
+          <option selected  value="0" >Role</option>
+          {% for R in Rs %}
+          <option  value="{{R.id}}">{{R.name}}</option>
+
+          {% endfor %}
+        </select>
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock body %}
